@@ -1,0 +1,10 @@
+[
+    {
+        "id": "astartes",
+        "name": "Adeptus Astartes"
+    },
+    {
+        "id": "mechanicus",
+        "name": "Adeptus Mechanicus"
+    }    
+]

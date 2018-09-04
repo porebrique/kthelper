@@ -15,4 +15,8 @@ export default class {
     generateUnit(unit) {
         return new Unit({ ...unit });
     }
+
+    setFaction(faction) {
+        this.faction = faction;
+    }
 }
