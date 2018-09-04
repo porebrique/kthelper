@@ -6,7 +6,7 @@ import { Button } from 'src/components';
 export default class extends React.PureComponent {
 
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     // TODO: define array properly
     units: PropTypes.array.isRequired

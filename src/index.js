@@ -7,8 +7,10 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { Router, hashHistory } from 'react-router';
 import routes from './routes';
+import initialState from './INITIAL_STATE';
 
-const store = createStore(reducers);
+// TODO: Remove mocked initial state
+const store = createStore(reducers, initialState);
 
 const Main = () => (
   <Provider store={store}>
