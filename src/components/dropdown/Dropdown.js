@@ -23,8 +23,6 @@ export default class extends React.PureComponent {
     onChange(event, selectedOption) {
         const { props } = selectedOption;
         const { value: id, children: name } = props;
-        // const id = lodash.get(selectedOption, 'props.value', null);
-        // const name = lodash.get(selectedOption, 'props.children', '');
         this.props.onChange({ id, name });
     }
 
