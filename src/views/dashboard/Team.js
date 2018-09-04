@@ -12,6 +12,11 @@ export default class extends React.PureComponent {
     units: PropTypes.array.isRequired
   };
 
+  getFaction() {
+    const { faction = {} } = this.props;
+    return faction.name || 'Faction is not defined';
+  }
+
   renderUnit(unit) {
     return <div key={unit.name} className="unit">{unit.name}</div>;
   }
@@ -27,15 +32,15 @@ export default class extends React.PureComponent {
   }
 
   render() {
-    const { name, units, faction } = this.props;
+    const { name, units } = this.props;
     const renderedUnits = units.map(this.renderUnit);
     const editButton = this.renderEditButton();
-    const renderedFaction = faction ? <span>{faction.name}</span> : null;
+    const faction = this.getFaction();
     return (
         <div className="team">
             <div className="wrapper">
                 <div className="team-name">{name}</div>
-                <div className="team-faction">{renderedFaction}</div>
+                <div className="team-faction">{faction}</div>
                 <div className="units">
                     {renderedUnits}
                 </div>
