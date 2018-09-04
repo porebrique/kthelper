@@ -17,21 +17,25 @@ export default class extends React.PureComponent {
   }
 
   renderEditButton() {
+    const { id } = this.props;
+    const url = `/teams/${id}/edit`
     const props = {
-        component: props => <Link to="/teams/1/edit" {...props} />
+        component: props => <Link to={url} {...props} />
     }
     
     return <Button {...props}>Edit</Button>;
   }
 
   render() {
-    const { name, units } = this.props;
+    const { name, units, faction } = this.props;
     const renderedUnits = units.map(this.renderUnit);
     const editButton = this.renderEditButton();
+    const renderedFaction = faction ? <span>{faction.name}</span> : null;
     return (
         <div className="team">
             <div className="wrapper">
                 <div className="team-name">{name}</div>
+                <div className="team-faction">{renderedFaction}</div>
                 <div className="units">
                     {renderedUnits}
                 </div>

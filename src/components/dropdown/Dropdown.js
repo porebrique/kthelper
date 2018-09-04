@@ -6,22 +6,26 @@ import * as lodash from 'lodash';
 import './style.scss';
 
 export default class extends React.PureComponent {
+
     constructor(props) {
         super(props);
         lodash.bindAll(this, [
           'onChange'
         ]);
       }
+
     getCurrentValue() {
         const { value } = this.props;
         const isObject = lodash.isPlainObject(value);
         return isObject ? value.id : value;
     }
+
     onChange(event, selectedOption) {
         const { props } = selectedOption;
         const { value: id, children: name } = props;
         this.props.onChange({ id, name });
     }
+
     renderOption(option) {
         const { id, name } = option;
         const props = {
@@ -31,6 +35,7 @@ export default class extends React.PureComponent {
         };
         return <MenuItem {...props} />
     }
+
     render() {
         const { options, id, name } = this.props;
         const renderedOptions = options.map(this.renderOption);
@@ -39,6 +44,7 @@ export default class extends React.PureComponent {
             'html-for': id,
             children: name
         };
+
         const selectProps = {
           value: this.getCurrentValue() || '',
           inputProps: { id, name },
