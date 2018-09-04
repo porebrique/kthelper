@@ -7,7 +7,7 @@ import { Team } from 'src/models';
 export default class extends React.Component {
 
   static propTypes = {
-    team: PropTypes.array,
+    teams: PropTypes.array,
     actions: PropTypes.shape({
       team: PropTypes.shape({
         setTeams: PropTypes.func.isRequired
