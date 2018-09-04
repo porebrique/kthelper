@@ -1,0 +1,14 @@
+{
+    "name": "Reiver",
+    "move": 6,
+    "weaponSkill": 3,
+    "ballisticSkill": 3,
+    "strength": 4,
+    "toughness": 4,
+    "wounds": 2,
+    "attacks": 2,
+    "leadership": 7,
+    "saves": 3,
+    "weaponsAvailable": [],
+    "wargearAvailable": []
+}
