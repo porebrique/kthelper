@@ -18,7 +18,7 @@ export default class extends React.PureComponent {
   }
 
   renderUnit(unit) {
-    return <div key={unit.name} className="unit">{unit.name}</div>;
+    return <div key={unit.uid} className="unit">{unit.name}</div>;
   }
 
   renderEditButton() {

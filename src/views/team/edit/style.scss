@@ -1,9 +1,26 @@
 .kth-team-edit {
-    .faction-widget {
-        width: 300px;
+    .widget {
+        width: 400px;
         margin: 20px 0;
         .widget-wrapper {
             padding: 20px;
+
+            .widget-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .units{
+        .units-list {
+            .unit {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+        }
+        .unit-picker {
+            margin-top: 20px;
         }
     }
 }

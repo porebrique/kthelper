@@ -1,3 +1,5 @@
+import uuid from 'uuid';
+
 export default class {
 
     constructor(props) {
@@ -27,5 +29,9 @@ export default class {
         this.saves = saves;
         this.weaponsAvailable = weaponsAvailable;
         this.wargearAvailable = wargearAvailable;
+
+        // NB: Similar units can be added multiple times, hence the random key generator
+        // uid is also supposed to be used as "key" prop 
+        this.uid = uuid();
     }
 }

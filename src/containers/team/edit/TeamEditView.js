@@ -34,6 +34,7 @@ export default class extends React.Component {
     const teams = [...currentTeams];
     const team = lodash.find(teams, { id: routeParams.teamId });
     team.setFaction(updatedTeam.faction);
+    team.setUnits(updatedTeam.units);
     actions.team.setTeams(teams);
     router.goBack();
   }
