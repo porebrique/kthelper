@@ -74,7 +74,7 @@ export default class extends React.PureComponent {
     }
     
     const { units } = team;
-    const availableUnits = library.units;
+    const availableUnits = library.getUnitsByFactionId(team.faction.id);
     const props = {
       availableUnits,
       units,

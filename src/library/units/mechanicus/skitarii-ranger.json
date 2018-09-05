@@ -1,0 +1,14 @@
+{
+    "name": "Skitarii ranger",
+    "move": 6,
+    "weaponSkill": 4,
+    "ballisticSkill": 3,
+    "strength": 3,
+    "toughness": 3,
+    "wounds": 1,
+    "attacks": 1,
+    "leadership": 6,
+    "saves": 4,
+    "weaponsAvailable": [],
+    "wargearAvailable": []
+}
