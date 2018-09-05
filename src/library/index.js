@@ -1,14 +1,5 @@
-import units from './units';
-import factions from './factions';
+import Library from './Library';
 
-const library = {
-  units,
-  factions
-}
+const library = new Library();
 
 export default library;
-
-export {
-  units,
-  factions
-};

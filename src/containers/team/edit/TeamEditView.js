@@ -1,8 +1,6 @@
 import React from 'react';
 import * as lodash from 'lodash';
 import { TeamEditView } from 'src/views';
-import { Team } from 'src/models';
-import { factions } from 'src/library';
 
 export default class extends React.Component {
 
@@ -13,16 +11,6 @@ export default class extends React.Component {
     ]);
   }  
 
-  // TODO: remove this temporary measure, or, better, mock initial global state
-  createMockTeam() {
-    return new Team({ id: '9' });
-  }
-
-  getDictionaries() {
-    return {
-      factions
-    };
-  }
 
   getTeam() {
     const { teams, routeParams } = this.props;
@@ -42,7 +30,6 @@ export default class extends React.Component {
   render() {
     const team = this.getTeam() || this.createMockTeam();
     const props = {
-      dictionaries: this.getDictionaries(),
       team,
       onSave: this.updateTeams
     }
