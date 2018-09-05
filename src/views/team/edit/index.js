@@ -1,3 +1,7 @@
+import { BasePage } from 'src/decorators';
 import TeamEditView from './TeamEditView';
 
-export default TeamEditView;
+@BasePage({ title: 'Edit team' })
+class DecoratedEditView extends TeamEditView {}
+
+export default DecoratedEditView;
