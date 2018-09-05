@@ -19,4 +19,8 @@ export default class {
     setFaction(faction) {
         this.faction = faction;
     }
+    setUnits(units) {
+        this.units = units;
+    }
+
 }

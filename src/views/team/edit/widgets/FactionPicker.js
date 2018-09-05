@@ -18,7 +18,7 @@ export default class extends React.PureComponent {
 
   render() {
     return (
-      <div className="faction-widget">
+      <div className="widget faction">
         <Paper>
           <div className="widget-wrapper">
             {this.renderSelector()}
