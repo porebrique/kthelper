@@ -2,6 +2,7 @@ import React from 'react';
 import * as lodash from 'lodash';
 import { Button } from 'src/components';
 import { Unit } from 'src/models';
+import { units as availableUnits } from 'src/library';
 import { FactionPicker, UnitsList } from './widgets';
 import './style.scss';
 
@@ -76,10 +77,6 @@ export default class extends React.PureComponent {
     }
     
     const { units } = team;
-    const availableUnits = [
-      { id: 1, name: 'Some guy' },
-      { id: 2, name: 'Another guy' }
-    ];
     const props = {
       availableUnits,
       units,
