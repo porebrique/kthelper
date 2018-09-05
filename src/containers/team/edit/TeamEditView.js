@@ -2,7 +2,7 @@ import React from 'react';
 import * as lodash from 'lodash';
 import { TeamEditView } from 'src/views';
 import { Team } from 'src/models';
-import factions from 'src/fixtures/factions/list.json';
+import { factions } from 'src/library';
 
 export default class extends React.Component {
 
