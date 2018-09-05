@@ -2,7 +2,7 @@ import React from 'react';
 import * as lodash from 'lodash';
 import { Button } from 'src/components';
 import { Unit } from 'src/models';
-import { units as availableUnits } from 'src/library';
+import library from 'src/library';
 import { FactionPicker, UnitsList } from './widgets';
 import './style.scss';
 
@@ -38,8 +38,6 @@ export default class extends React.PureComponent {
     this.setState({ team });
   }
 
-  // TODO: Think about generating a unit correctly, as a class instance, 
-  // and about where it should happen
   addUnit(unitData) {
     const { team: currentTeam } = this.state;
     const unit = new Unit(unitData);
@@ -59,11 +57,10 @@ export default class extends React.PureComponent {
   }
 
   renderFaction() {
-    const { dictionaries } = this.props;
     const { team } = this.state;
     const props = {
       selectedFaction: team.faction,
-      factions: dictionaries.factions,
+      factions: library.factions,
       onChange: this.changeFaction
     };
     return <FactionPicker {...props} />;
@@ -77,6 +74,7 @@ export default class extends React.PureComponent {
     }
     
     const { units } = team;
+    const availableUnits = library.units;
     const props = {
       availableUnits,
       units,
