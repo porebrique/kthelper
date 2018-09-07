@@ -22,8 +22,11 @@ export default class extends React.PureComponent {
   
   renderUnit(unit) {
     const props = {
-      key: unit.id,
-      unit,
+      key: unit.key,
+      unit: {
+        id: unit.key,
+        ...unit
+      },
       onAdd: this.props.onChange.bind(this, unit)
     };
     return <UnitCard {...props} />;
