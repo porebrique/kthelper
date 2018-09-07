@@ -42,7 +42,7 @@ export default class extends React.PureComponent {
       <Card className="unit-card" style={{ marginBottom: 20 }}>
         <CardContent>
           <Typography gutterBottom variant="headline" component="h4">
-            {unit.name}
+            {unit.unitName}
           </Typography>
           {this.renderGrid()}
         </CardContent>

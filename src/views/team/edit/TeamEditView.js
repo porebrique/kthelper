@@ -1,7 +1,6 @@
 import React from 'react';
 import * as lodash from 'lodash';
 import { Button } from 'src/components';
-import { Unit } from 'src/models';
 import library from 'src/library';
 import { FactionPicker, UnitsList } from './widgets';
 import './style.scss';
@@ -33,16 +32,9 @@ export default class extends React.PureComponent {
   getAvailableUnits() {
     const { team } = this.state;
     const allAvailableUnits = team.faction ? library.getUnitsByFactionId(team.faction.key) : [];
-    const addedUnits = lodash.groupBy(team.units, 'id');
+    const addedUnits = lodash.groupBy(team.units, 'key');
 
-    return allAvailableUnits.filter(unit => {
-      const { id, max } = unit;
-      if (!max) {
-        return true;
-      }
-      const sameTypeUnits = addedUnits[id] || [];
-      return sameTypeUnits.length < max;
-    });
+    return allAvailableUnits.filter(unit => this.canAddSimilarUnits(unit, addedUnits));
   }
 
   changeFaction(faction) {
@@ -57,9 +49,19 @@ export default class extends React.PureComponent {
     this.setState({ team });
   }
 
-  addUnit(unitData) {
+  canAddSimilarUnits(unit, addedUnits) {
+    const { key, max } = unit;
+    if (!max) {
+      return true;
+    }
+    const sameTypeUnits = addedUnits[key] || [];
+    return sameTypeUnits.length < max;
+  }
+
+  
+  addUnit(Unit) {
     const { team: currentTeam } = this.state;
-    const unit = new Unit(unitData);
+    const unit = new Unit();
     const team = {
       ...currentTeam,
       units: [

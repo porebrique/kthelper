@@ -10,11 +10,11 @@ export default class {
     this.factions = lodash.map(factions, Faction => new Faction());
   }
 
-  getUnitsByFactionId(factionId) {
-      if (!this.isFactionKeyValid(factionId)) {
-        throw new Error(`Library.getFaction: faction key has invalid value of ${factionId} `)
+  getUnitsByFactionId(factionKey) {
+      if (!this.isFactionKeyValid(factionKey)) {
+        throw new Error(`Library.getFaction: faction key has invalid value of ${factionKey} `)
     }
-    return lodash.filter(this.units, { factionId }) || [];
+    return lodash.filter(this.units, { factionKey }) || [];
   }
 
   getFaction(key) {

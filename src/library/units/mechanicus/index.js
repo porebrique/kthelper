@@ -1,4 +1,4 @@
-import skitariiRanger from './skitarii-ranger';
+import skitariiRanger from './SkitariiRanger';
 
 export default [
   skitariiRanger
