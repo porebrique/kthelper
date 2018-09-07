@@ -10,14 +10,18 @@ export default class extends React.PureComponent {
     name: PropTypes.string.isRequired,
     faction: PropTypes.shape({
       name: PropTypes.string.isRequired
-    }).isRequired,
+    }),
     // TODO: define array properly
     units: PropTypes.array.isRequired
   };
 
+  static defaultProps = {
+    faction: null
+  }
+
   getFaction() {
-    const { faction = {} } = this.props;
-    return faction.name || 'Faction is not defined';
+    const { faction } = this.props;
+    return (faction && faction.name) || 'Faction is not defined';
   }
 
   renderUnit(unit) {

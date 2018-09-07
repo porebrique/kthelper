@@ -1,4 +1,5 @@
 import Unit from './Unit';
+import Library from 'src/library';
 
 export default class {
     constructor(props) {
@@ -10,7 +11,7 @@ export default class {
         } = props;
         this.id = id;
         this.name = name || `Team ${id}`;
-        this.faction = faction;
+        this.setFaction(faction);
         this.units = units.map(this.generateUnit);
     }
 
@@ -18,8 +19,12 @@ export default class {
         return new Unit({ ...unit });
     }
 
+    getFaction(faction) {
+      return faction ? Library.getFaction(faction.key) : null;
+    }
+
     setFaction(faction) {
-        this.faction = faction;
+        this.faction = this.getFaction(faction);
     }
     setUnits(units) {
         this.units = units;

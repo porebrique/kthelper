@@ -31,7 +31,6 @@ export default class extends React.PureComponent {
 
   render() {
     const { availableUnits, onClose } = this.props;
-    console.log('onAdd:', this.props.onAdd);
     const drawerProps = {
       anchor: 'right',
       open: true,

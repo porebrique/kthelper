@@ -1,3 +1,7 @@
-import factions from './list.json';
+import AdeptusAstartes from './AdeptusAstartes';
+import AdeptusMechanicus from './AdeptusMechanicus';
 
-export default factions;
+export {
+  AdeptusAstartes,
+  AdeptusMechanicus
+};
