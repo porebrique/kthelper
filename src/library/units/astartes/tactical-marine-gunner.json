@@ -1,0 +1,16 @@
+{
+  "name": "Tactical marine gunner",
+  "id": "tacticalMarineGunner",
+  "move": 6,
+  "weaponSkill": 3,
+  "ballisticSkill": 3,
+  "strength": 4,
+  "toughness": 4,
+  "wounds": 1,
+  "attacks": 1,
+  "leadership": 7,
+  "saves": 3,
+  "max": 2,
+  "weaponsAvailable": [],
+  "wargearAvailable": []
+}

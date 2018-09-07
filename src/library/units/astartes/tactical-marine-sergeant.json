@@ -1,0 +1,16 @@
+{
+  "name": "Tactical marine sergeant",
+  "id": "tacticalMarineSergeant",
+  "move": 6,
+  "weaponSkill": 3,
+  "ballisticSkill": 3,
+  "strength": 4,
+  "toughness": 4,
+  "wounds": 1,
+  "attacks": 2,
+  "leadership": 8,
+  "saves": 3,
+  "max": 1,
+  "weaponsAvailable": [],
+  "wargearAvailable": []
+}

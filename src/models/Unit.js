@@ -5,6 +5,7 @@ export default class {
     constructor(props) {
         const { 
             name, 
+            id,
             move,
             weaponSkill, 
             ballisticSkill, 
@@ -13,10 +14,12 @@ export default class {
             wounds, 
             attacks, 
             leadership, 
-            saves, 
+            saves,
+            max, 
             weaponsAvailable, 
             wargearAvailable, 
         } = props;
+        this.id = id;
         this.name = name;
         this.move = move;
         this.weaponSkill = weaponSkill;
@@ -27,6 +30,7 @@ export default class {
         this.attacks = attacks;
         this.leadership = leadership;
         this.saves = saves;
+        this.max = max;
         this.weaponsAvailable = weaponsAvailable;
         this.wargearAvailable = wargearAvailable;
 

@@ -29,6 +29,21 @@ export default class extends React.PureComponent {
     };
   }
 
+  getAvailableUnits() {
+    const { team } = this.state;
+    const allAvailableUnits = library.getUnitsByFactionId(team.faction.id);
+    const addedUnits = lodash.groupBy(team.units, 'id');
+
+    return allAvailableUnits.filter(unit => {
+      const { id, max } = unit;
+      if (!max) {
+        return true;
+      }
+      const sameTypeUnits = addedUnits[id] || [];
+      return sameTypeUnits.length < max;
+    });
+  }
+
   changeFaction(faction) {
     const { team: currentTeam } = this.state;
     const team = {
@@ -74,7 +89,7 @@ export default class extends React.PureComponent {
     }
     
     const { units } = team;
-    const availableUnits = library.getUnitsByFactionId(team.faction.id);
+    const availableUnits = this.getAvailableUnits();
     const props = {
       availableUnits,
       units,
