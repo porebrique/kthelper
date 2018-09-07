@@ -8,6 +8,9 @@ export default class extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    faction: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }).isRequired,
     // TODO: define array properly
     units: PropTypes.array.isRequired
   };
