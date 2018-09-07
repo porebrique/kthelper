@@ -20,7 +20,7 @@ export default class extends React.PureComponent {
       'toggleUnitPicker'
     ]);
     this.state = {
-      isUnitsPanelOpen: true
+      isUnitsPanelOpen: false
     };
   }
   
