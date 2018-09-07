@@ -25,8 +25,7 @@ export default class {
   }
 
   isFactionKeyValid(key) {
-    const isDefined = !!key;
-    return isDefined && lodash.includes(lodash.values(factionKeys), key);
+    return !!key && lodash.includes(lodash.values(factionKeys), key);
   }
 
 }
