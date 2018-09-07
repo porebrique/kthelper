@@ -5,7 +5,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import { Button } from 'src/components';
+import { Button, Grid } from 'src/components';
+import unitGridColumns from './unitGridColumns';
 
 export default class extends React.PureComponent {
 
@@ -26,6 +27,15 @@ export default class extends React.PureComponent {
     onAdd(unit);
   }
 
+  renderGrid() {
+    const { unit } = this.props;
+    const props = {
+      columns: unitGridColumns,
+      items: [unit]
+    };
+    return <Grid {...props} />;
+  }
+
   render() {
     const { unit } = this.props;
     return (
@@ -34,6 +44,7 @@ export default class extends React.PureComponent {
           <Typography gutterBottom variant="headline" component="h4">
             {unit.name}
           </Typography>
+          {this.renderGrid()}
         </CardContent>
         <CardActions>
           <Button variant="flat" onClick={this.add}>Add</Button>
