@@ -1,11 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import * as lodash from 'lodash';
 import './style.scss';
 
+const optionProp = PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    name: PropTypes.string.isRequired
+});
+
 export default class extends React.PureComponent {
+
+    static propTypes = {
+        options: PropTypes.arrayOf(optionProp).isRequired,
+        selectedOption: optionProp,
+        onChange: PropTypes.func.isRequired
+    };
+
+    static defaultProps = {
+        selectedOption: null
+    };
 
     constructor(props) {
         super(props);
@@ -16,7 +32,7 @@ export default class extends React.PureComponent {
 
     getCurrentValue() {
         const { value } = this.props;
-        const isObject = lodash.isPlainObject(value);
+        const isObject = lodash.isObjectLike(value);
         return isObject ? value.id : value;
     }
 

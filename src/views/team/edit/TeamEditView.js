@@ -22,6 +22,7 @@ export default class extends React.PureComponent {
     ]);
 
     // TODO: consider plain state structure, assuming there is nothing but team inside
+    // TODO: team.faction can be class instance or plain object at various moments, which is wrong
     this.state = {
       team: {
         ...props.team
@@ -31,7 +32,7 @@ export default class extends React.PureComponent {
 
   getAvailableUnits() {
     const { team } = this.state;
-    const allAvailableUnits = library.getUnitsByFactionId(team.faction.id);
+    const allAvailableUnits = team.faction ? library.getUnitsByFactionId(team.faction.key) : [];
     const addedUnits = lodash.groupBy(team.units, 'id');
 
     return allAvailableUnits.filter(unit => {
@@ -48,7 +49,10 @@ export default class extends React.PureComponent {
     const { team: currentTeam } = this.state;
     const team = {
       ...currentTeam,
-      faction
+      faction: {
+        ...faction,
+        key: faction.id
+      }
     }
     this.setState({ team });
   }

@@ -4,8 +4,7 @@ const initialTeam = new Team({
   id: '1', 
   name: 'Mocked predefined team', 
   faction: { 
-    id: 'astartes', 
-    name: 'Adeptus astartes'
+    key: 'astartes'
   } 
 });
 

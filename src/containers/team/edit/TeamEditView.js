@@ -28,7 +28,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const team = this.getTeam() || this.createMockTeam();
+    const team = this.getTeam();
     const props = {
       team,
       onSave: this.updateTeams
