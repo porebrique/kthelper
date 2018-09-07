@@ -5,10 +5,12 @@ export default class {
         const { 
             id,
             name,
+            faction,
             units = []
         } = props;
         this.id = id;
         this.name = name || `Team ${id}`;
+        this.faction = faction;
         this.units = units.map(this.generateUnit);
     }
 
