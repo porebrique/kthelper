@@ -1,5 +1,6 @@
 {
     "name": "Skitarii ranger",
+    "id": "skitariiRanger",
     "move": 6,
     "weaponSkill": 4,
     "ballisticSkill": 3,
@@ -9,6 +10,7 @@
     "attacks": 1,
     "leadership": 6,
     "saves": 4,
+    "max": null,
     "weaponsAvailable": [],
     "wargearAvailable": []
 }

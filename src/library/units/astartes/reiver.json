@@ -1,5 +1,6 @@
 {
     "name": "Reiver",
+    "id": "reiver",
     "move": 6,
     "weaponSkill": 3,
     "ballisticSkill": 3,
@@ -9,6 +10,7 @@
     "attacks": 2,
     "leadership": 7,
     "saves": 3,
+    "max": null,
     "weaponsAvailable": [],
     "wargearAvailable": []
 }
