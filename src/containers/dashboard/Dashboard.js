@@ -24,11 +24,17 @@ export default class extends React.Component {
     lodash.bindAll(this, ['addTeam']);
   }
 
+  getNewTeamId() {
+    const { teams } = this.props;
+    const index = teams.length;
+    return 'ABCD'[index];
+  }
+
   addTeam() {
     const { teams, actions } = this.props;
     // TODO: Consider using ids, auto-generated from inside the model
     // Currently it is only visible in the name, but the name can be replaced by faction, after picking units
-    const id = lodash.toString(teams.length + 1);
+    const id = this.getNewTeamId();
     const team = new Team({ id });
 
     actions.team.setTeams([

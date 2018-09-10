@@ -1,8 +1,8 @@
 import { Team } from 'src/models';
 
 const initialTeam = new Team({
-  id: '1', 
-  name: 'Mocked predefined team', 
+  id: 'A', 
+  // name: 'Mocked predefined team', 
   faction: { 
     key: 'astartes'
   } 
