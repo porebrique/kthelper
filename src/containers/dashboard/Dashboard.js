@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as lodash from 'lodash';
 import { Dashboard } from 'src/views';
-import { Team } from 'src/models';
+import { Team, Game } from 'src/models';
 
 export default class extends React.Component {
 
@@ -21,7 +21,7 @@ export default class extends React.Component {
 
   constructor(props) {
     super(props);
-    lodash.bindAll(this, ['addTeam']);
+    lodash.bindAll(this, ['addTeam', 'startGame']);
   }
 
   getNewTeamId() {
@@ -43,11 +43,23 @@ export default class extends React.Component {
     ]);
   }
 
+  startGame() {
+    const { teams, actions } = this.props;
+    const game = new Game({ teams });
+    console.log('game is:', game);
+    actions.game.setGame(game);
+  }  
+
   render() {
-    const { teams } = this.props;
+    const { teams, game } = this.props;
+    const gameControls = {
+      game,
+      onGameStart: this.startGame
+    };
 
     const props = {
       teams,
+      gameControls,
       onAddTeam: this.addTeam
     }
     return <Dashboard {...props} />;

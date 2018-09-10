@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import GameControls from './GameControls';
+import './style.scss';
 
 export default class extends React.PureComponent {
 
@@ -13,16 +15,27 @@ export default class extends React.PureComponent {
     return <Link {...props} />;
   }
 
+  renderGameControls() {
+    const { gameControls } = this.props;
+    const { onGameStart, game } = gameControls;
+    const props = {
+      game,
+      onStart: onGameStart
+    };
+    return <GameControls {...props} />;
+  }
+
   render() {
     const { children } = this.props;
     const title = this.renderTitle();
-    
+
     return (
       <div className="page-wrapper">
         <div className="page-header">
             <div className="page-title">
                 {title}
             </div>
+            {this.renderGameControls()}
         </div>
         <div className="page-content">
           {children}
