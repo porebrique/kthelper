@@ -1,0 +1,14 @@
+.page-header {
+  float: left;
+  width: 100%;
+
+  .page-title {
+    float: left;
+    width: 50%;
+  }
+  .game-controls {
+    float: right;
+    width: 49%;
+    text-align: right;
+  }
+}

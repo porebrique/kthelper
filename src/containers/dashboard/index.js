@@ -1,8 +1,9 @@
 import { createConnector } from 'src/helpers';
 import Dashboard from './Dashboard';
-import { team } from 'src/actions';
+import { team, game } from 'src/actions';
 
 const actions = {
+  game,
   team
 };
 
