@@ -1,7 +1,7 @@
 import Unit from './Unit';
 import Library from 'src/library';
 
-export default class {
+export default class Team {
     constructor(props) {
         const { 
             id,
