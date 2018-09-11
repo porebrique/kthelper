@@ -21,6 +21,7 @@ export default class extends React.Component {
       rolls: []
     };
     lodash.bindAll(this, [
+      'rollOffTeams',
       'finishPhase',
       'renderTeam'
     ]);
@@ -104,6 +105,7 @@ export default class extends React.Component {
         {teamsRendered}
         {winningTeam}
         <div style={{ marginTop: 20}}>
+          <Button onClick={this.rollOffTeams}>Reroll</Button>
           <Button onClick={this.finishPhase}>Proceed</Button>
         </div>
         <div style={{ marginTop: 40}}>
