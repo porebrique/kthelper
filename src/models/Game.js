@@ -14,7 +14,7 @@ export default class {
     { id: phaseNames.movement, name: 'Movement phase' },
     { id: phaseNames.psychic, name: 'Psychic phase' },
     { id: phaseNames.shooting, name: 'Shooting phase' },
-    { id: phaseNames.fight, name: 'Fighting phase' },
+    { id: phaseNames.fighting, name: 'Fighting phase' },
     { id: phaseNames.morale, name: 'Morale phase' }
   ];
 
@@ -24,8 +24,33 @@ export default class {
     } =  options;
     this.teams = teams;
 
-    this.roundNumber = 1;
-    this.phase = this.constructor.phases[0];
+    this.roundNumber = 0;
+    this.finishTurn();
+  }
+
+  setInitiativeTeam(team) {
+    this.initiativeTeam = team;
+  }
+
+  setPhase(phase) {
+    this.phase = phase;
+  }
+
+  finishPhase() {
+    const { phases } = this.constructor;
+    let currentPhaseIndex = phases.indexOf(this.phase);
+    const isLastPhase = currentPhaseIndex === phases.length - 1;
+    if (isLastPhase) {
+      this.finishTurn();
+    } else {
+      const nextPhase = phases[currentPhaseIndex + 1];
+      this.setPhase(nextPhase);
+    }
+  }
+
+  finishTurn() {
+    this.roundNumber++;
+    this.setPhase(this.constructor.phases[0]);
   }
 
 }
