@@ -1,7 +1,7 @@
 
 const game = (state = {}, action) => {
-  console.log('game reducer, state is', state);
-  console.log('game reducer, action is', action);
+  // console.log('game reducer, state is', state);
+  // console.log('game reducer, action is', action);
   if (action.type === 'GAME_SET') {
     return [...action.data]
   } 
