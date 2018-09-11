@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { hashHistory as history } from 'react-router';
 import * as lodash from 'lodash';
 import { Dashboard } from 'src/views';
 import { Team, Game } from 'src/models';
@@ -46,8 +47,8 @@ export default class extends React.Component {
   startGame() {
     const { teams, actions } = this.props;
     const game = new Game({ teams });
-    console.log('game is:', game);
     actions.game.setGame(game);
+    history.push('/game');
   }  
 
   render() {
