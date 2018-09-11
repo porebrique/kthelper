@@ -24,6 +24,11 @@ export default class {
     return lodash.find(this.factions, { key });
   }
 
+  // For development purposes, can't see any use-cases in real context
+  getUnitById(key) {
+    return lodash.find(this.units, { key });
+  }
+
   isFactionKeyValid(key) {
     return !!key && lodash.includes(lodash.values(factionKeys), key);
   }
