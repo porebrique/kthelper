@@ -51,7 +51,6 @@ export default class {
       this.finishTurn();
     } else {
       const nextPhase = phases[currentPhaseIndex + 1];
-      console.log('nextPhase:', nextPhase)
       this.setPhase(nextPhase);
     }
   }
