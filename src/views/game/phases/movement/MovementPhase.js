@@ -13,8 +13,8 @@ export default class extends React.Component {
   }
 
 
-  onSelectMovementType(event, type) {
-    // console.log('selected movement:', type)
+  onSelectMovementType(type) {
+    console.log('selected movement:', type)
     // TODO:
   }
 
