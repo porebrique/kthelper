@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
-import team from './team';
-import game from './game';
+import createReducer from './createReducer';
+
+const game = createReducer('GAME_SET', null);
+const teams = createReducer('TEAM_SET', []);
 
 const reducers = {
-  ...game,
-  ...team
+  game,
+  teams
 };
 
 
