@@ -8,11 +8,11 @@ export default class extends React.PureComponent {
     if (!game) {
       return null;
     }
-    const { roundNumber, phase } = game;
+    const { round } = game;
     return (
       <div>
-        <div>Round {roundNumber}</div>
-        <div>{phase.name}</div>
+        <div>Round {round.number}</div>
+        <div>{round.phase.name}</div>
       </div>
     );
   }
