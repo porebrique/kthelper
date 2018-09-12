@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as lodash from 'lodash';
+import { d6 } from 'src/helpers';
 import {
   Button
 } from 'src/components';
-
-const roll = () => lodash.random(1, 6);
 
 export default class extends React.Component {
 
@@ -53,8 +52,8 @@ export default class extends React.Component {
     const { game } = this.props;
     const { teams } = game;
     const rolls = teams.map(team => {
-      const results = [roll(), roll()];
-      const sum = lodash.sum(results);
+      const results = d6.rollTimes(2);
+      const sum = results.sum;
       return { team, results, sum };
     });
     this.setState({ rolls });
