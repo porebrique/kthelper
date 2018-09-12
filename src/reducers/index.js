@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import createReducer from './createReducer';
+import * as actions from 'src/actions';
 
-const game = createReducer('GAME_SET', null);
-const teams = createReducer('TEAM_SET', []);
+const game = createReducer(actions.game.setGame.code, null);
+const teams = createReducer(actions.team.setTeams.code, []);
 
 const reducers = {
   game,
