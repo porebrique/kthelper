@@ -24,12 +24,19 @@ export default class {
     } =  options;
     this.teams = teams;
 
-    this.roundNumber = 0;
-    this.finishTurn();
+    this.setPhase(this.constructor.phases[0]);
+
+    this.setRound({
+      number: 1
+    })
   }
 
   setInitiativeTeam(team) {
     this.initiativeTeam = team;
+  }
+
+  setRound(round) {
+    this.round = round;
   }
 
   setPhase(phase) {
@@ -48,9 +55,13 @@ export default class {
     }
   }
 
-  finishTurn() {
-    this.roundNumber++;
+  finishRound() {
+    const { number: roundNumber } = this.round;
+    this.setRound({
+      number: roundNumber + 1
+    });
     this.setPhase(this.constructor.phases[0]);
+    this.setInitiativeTeam(null);
   }
 
 }

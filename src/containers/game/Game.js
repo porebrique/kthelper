@@ -15,21 +15,17 @@ export default class extends React.Component {
     ]);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('nextProps:', nextProps)
-  }
-
   finishPhase(key, data) {
     const phaseHandlerName = this.constructor.phaseHandlers[key];
     this[phaseHandlerName](data);
   }
 
   finishInitiativePhase(data) {
-    const { game } = this.props;
+    const { game, actions } = this.props;
     const { winningTeam } = data;
     game.setInitiativeTeam(winningTeam);
     game.finishPhase();
-    // TODO: trigger re-render. MB put turn/phase to the state?
+    actions.game.refresh();
   }
 
   render() {
