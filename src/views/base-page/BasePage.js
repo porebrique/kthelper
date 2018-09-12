@@ -19,7 +19,8 @@ export default class extends React.PureComponent {
     const { gameControls } = this.props;
     const { onGameStart, game } = gameControls;
     const props = {
-      game,
+      // Spreading is required to create new object, otherwise component won't update
+      game: { ...game },
       onStart: onGameStart
     };
     return <GameControls {...props} />;

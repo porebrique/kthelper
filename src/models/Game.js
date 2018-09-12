@@ -24,9 +24,10 @@ export default class {
     } =  options;
     this.teams = teams;
 
+    this.setPhase(this.constructor.phases[0]);
+
     this.setRound({
-      number: 1,
-      phase: this.constructor.phases[0]
+      number: 1
     })
   }
 
@@ -39,27 +40,29 @@ export default class {
   }
 
   setPhase(phase) {
-    this.setRound({
-      ...this.round,
-      phase
-    });
+    this.phase = phase;
   }
 
   finishPhase() {
     const { phases } = this.constructor;
-    let currentPhaseIndex = phases.indexOf(this.round.phase);
+    let currentPhaseIndex = phases.indexOf(this.phase);
     const isLastPhase = currentPhaseIndex === phases.length - 1;
     if (isLastPhase) {
       this.finishTurn();
     } else {
       const nextPhase = phases[currentPhaseIndex + 1];
+      console.log('nextPhase:', nextPhase)
       this.setPhase(nextPhase);
     }
   }
 
   finishRound() {
-    this.roundNumber++;
+    const { number: roundNumber } = this.round;
+    this.setRound({
+      number: roundNumber + 1
+    });
     this.setPhase(this.constructor.phases[0]);
+    this.setInitiativeTeam(null);
   }
 
 }

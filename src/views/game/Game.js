@@ -14,7 +14,7 @@ export default class extends React.Component {
   renderPhase() {
     const { phaseComponents } = this.constructor;
     const { game } = this.props;
-    const PhaseComponent = phaseComponents[game.round.phase.id];
+    const PhaseComponent = phaseComponents[game.phase.id];
     if (!PhaseComponent) {
       throw new Error('Game.js: renderPhase: component is not defined. Probably missing in "phaseComponents"?');
     }
