@@ -1,34 +1,29 @@
 import React from 'react';
-import * as lodash from 'lodash';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { RadioGroup } from 'src/components';
 
 export default class extends React.Component {
 
-
-  constructor(props) {
-    super(props);
-    lodash.bindAll(this, [
-    ]);
-  }
-
+  static movementTypes = [
+    { id: 'normal', name: 'Move normally' },
+    { id: 'advance', name: 'Advance' },
+    { id: 'charge', name: 'Charge' },
+    { id: 'fallback', name: 'Fall back' }
+  ];
 
   render() {
-    const { unit, onSelectMovementType } = this.props;
+    const { movementTypes: options } = this.constructor;
+    const { unit, selectedMovementType, onSelectMovementType } = this.props;
+
     const groupProps = {
-      name: 'movementType',
+      options,
+      inline: true,
+      selectedOption: selectedMovementType,
       onChange: onSelectMovementType
     };
     return (
       <div>
-        {unit.name} will: 
-        <RadioGroup {...groupProps}>
-          <FormControlLabel value="normal" control={<Radio />} label="Move normally" />
-          <FormControlLabel value="advance" control={<Radio />} label="Advance" />
-          <FormControlLabel value="charge" control={<Radio />} label="Charge" />
-          <FormControlLabel value="fallback" control={<Radio />} label="Fall back" />
-        </RadioGroup>
+        {unit.name} will:
+        <RadioGroup {...groupProps} />
       </div>
     )
   }
