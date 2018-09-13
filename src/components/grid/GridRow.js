@@ -12,6 +12,10 @@ export default class extends React.PureComponent {
     row: PropTypes.object.isRequired
   };
 
+  static decorators = {
+    default: ({ cell }) => cell
+  }
+
   constructor(props) {
     super(props);
     lodash.bindAll(this, [
@@ -19,13 +23,20 @@ export default class extends React.PureComponent {
     ]);
   }
 
+  getDecorator(column) {
+    const { decorators } = this.constructor;
+    const { type, decorator } = column;
+    return decorator || decorators[type] || decorators.default;
+  }
+
   renderCell(column) {
     const { row } = this.props;
     const data = row[column.key]
+    const decorator = this.getDecorator(column);
     const props =  {
       numeric: true,
       key: column.key,
-      children: data
+      children: decorator({ cell: data, row })
     };
     return <TableCell {...props} />;
   }
