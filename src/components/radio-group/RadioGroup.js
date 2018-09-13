@@ -1,10 +1,12 @@
 import React from 'react';
 import * as lodash from 'lodash';
+import classnames from 'classnames';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import './style.scss';
 
-export default class extends React.Component {
+export default class extends React.PureComponent {
 
 
   constructor(props) {
@@ -19,6 +21,11 @@ export default class extends React.Component {
     this.props.onChange(selectedOption);
   }
 
+  getCurrentValue() {
+    const { selectedOption } = this.props;
+    return selectedOption ? selectedOption.id : null;
+  }
+
   renderOption(option) {
     const { id: value, name } = option;
     const props = {
@@ -30,11 +37,14 @@ export default class extends React.Component {
     return <FormControlLabel {...props} />;
   }
 
+
   render() {
-    const { options, name } = this.props;
+    const { options, name, className, inline = true } = this.props;
     const groupProps = {
       name,
+      value: this.getCurrentValue(),
       onChange: this.onChange,
+      className: classnames(className, 'kth-radio-group', { inline }),
     };
     const renderedOptions = options.map(this.renderOption);
     return (

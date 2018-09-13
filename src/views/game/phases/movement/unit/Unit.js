@@ -21,7 +21,6 @@ export default class extends React.Component {
       { id: 'charge', name: 'Charge' },
       { id: 'fallback', name: 'Fall back' }
     ];
-    console.log('selectedMovementType:', selectedMovementType)
     const groupProps = {
       options,
       selectedOption: selectedMovementType,
