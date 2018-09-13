@@ -1,5 +1,4 @@
 import React from 'react';
-import * as lodash from 'lodash';
 import { RadioGroup } from 'src/components';
 
 export default class extends React.Component {
@@ -11,12 +10,6 @@ export default class extends React.Component {
     { id: 'fallback', name: 'Fall back' }
   ];
 
-  constructor(props) {
-    super(props);
-    lodash.bindAll(this, [
-    ]);
-  }
-
   render() {
     const { movementTypes: options } = this.constructor;
     const { unit, selectedMovementType, onSelectMovementType } = this.props;
@@ -24,12 +17,11 @@ export default class extends React.Component {
     const groupProps = {
       options,
       selectedOption: selectedMovementType,
-      name: 'movementType',
       onChange: onSelectMovementType
     };
     return (
       <div>
-        {unit.name} will: 
+        {unit.name} will:
         <RadioGroup {...groupProps} />
       </div>
     )

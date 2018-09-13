@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as lodash from 'lodash';
 import classnames from 'classnames';
 import Radio from '@material-ui/core/Radio';
@@ -6,8 +7,22 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import './style.scss';
 
+const optionProp = PropTypes.shape({
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  name: PropTypes.string.isRequired
+});
+
 export default class extends React.PureComponent {
 
+  static propTypes = {
+    selectedOption: optionProp,
+    options: PropTypes.arrayOf(optionProp).isRequired,
+    onChange: PropTypes.func.isRequired
+  };
+
+  static defaultProps = {
+    selectedOption: null
+  };
 
   constructor(props) {
     super(props);
@@ -38,18 +53,14 @@ export default class extends React.PureComponent {
   }
 
   render() {
-    const { options, name, className, inline = true } = this.props;
+    const { options, className, inline = true } = this.props;
     const groupProps = {
-      name,
       value: this.getCurrentValue(),
       onChange: this.onChange,
       className: classnames(className, 'kth-radio-group', { inline }),
+      children: options.map(this.renderOption)
     };
-    const renderedOptions = options.map(this.renderOption);
-    return (
-      <RadioGroup {...groupProps}>
-        {renderedOptions}
-      </RadioGroup>
-    )
+
+    return <RadioGroup {...groupProps} />;
   }
 }
