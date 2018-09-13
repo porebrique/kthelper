@@ -16,6 +16,7 @@ export default class extends React.Component {
 
     const groupProps = {
       options,
+      inline: true,
       selectedOption: selectedMovementType,
       onChange: onSelectMovementType
     };

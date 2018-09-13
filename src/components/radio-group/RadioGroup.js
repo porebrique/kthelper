@@ -17,11 +17,13 @@ export default class extends React.PureComponent {
   static propTypes = {
     selectedOption: optionProp,
     options: PropTypes.arrayOf(optionProp).isRequired,
+    inline: PropTypes.bool,
     onChange: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    selectedOption: null
+    selectedOption: null,
+    inline: false
   };
 
   constructor(props) {
@@ -53,7 +55,7 @@ export default class extends React.PureComponent {
   }
 
   render() {
-    const { options, className, inline = true } = this.props;
+    const { options, className, inline } = this.props;
     const groupProps = {
       value: this.getCurrentValue(),
       onChange: this.onChange,
