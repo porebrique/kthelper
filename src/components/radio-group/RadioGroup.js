@@ -37,7 +37,6 @@ export default class extends React.PureComponent {
     return <FormControlLabel {...props} />;
   }
 
-
   render() {
     const { options, name, className, inline = true } = this.props;
     const groupProps = {

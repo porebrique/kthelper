@@ -12,6 +12,7 @@ export default class extends React.Component {
       'renderUnit'
     ]);
 
+    // TODO: store type in particular unit's data
     this.state = {
       movementType: null
     }
