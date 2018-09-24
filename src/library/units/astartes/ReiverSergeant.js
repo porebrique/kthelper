@@ -1,7 +1,7 @@
-import Unit from '../Unit';
+import Reiver from './Reiver';
 import { factionKeys } from '../../dictionaries';
 
-export default class extends Unit {
+export default class extends Reiver {
 
   static factionKey = factionKeys.astartes;
   static key = 'reiverSergeant';
