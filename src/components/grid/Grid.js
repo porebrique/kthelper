@@ -21,10 +21,6 @@ export default class extends React.PureComponent {
     })).isRequired
   };
 
-  static defaultProps = {
-    methods: {}
-  }
-
   constructor(props) {
     super(props);
     lodash.bindAll(this, [
