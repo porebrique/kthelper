@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'src/components';
-import unitGridColumns from './unit/unitGridColumns';
+import unitGridColumns from '../unit-picker/unit/unitGridColumns';
 
 const decorators = {
   edit: () => {
@@ -10,10 +10,14 @@ const decorators = {
       </div>
     );
   },
-  remove: () => {
+  remove: ({ row, controller }) => {
+    const { onRemove } = controller.props;
+    const props = {
+      onClick: () => onRemove(row.id)
+    }
     return (
       <div>
-        <Button>Delete</Button>
+        <Button {...props}>Delete</Button>
       </div>
     );
   }  

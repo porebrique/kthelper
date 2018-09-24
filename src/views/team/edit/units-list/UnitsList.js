@@ -1,63 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as lodash from 'lodash';
 import Paper from '@material-ui/core/Paper';
 import { Button, Grid } from 'src/components';
-import UnitPicker from './UnitPicker';
 import columns from './columns';
 
 export default class extends React.PureComponent {
 
   static propTypes = {
-    availableUnits: PropTypes.array.isRequired,
     units: PropTypes.array.isRequired,
+    onRemove: PropTypes.func.isRequired,
     onAdd: PropTypes.func.isRequired
   };
 
   constructor(props) {
     super(props);
-
-    lodash.bindAll(this, [
-      'toggleUnitPicker'
-    ]);
     this.state = {
       isUnitsPanelOpen: false
     };
   }
   
-  toggleUnitPicker() {
-    const isUnitsPanelOpen = !this.state.isUnitsPanelOpen;
-    this.setState({ isUnitsPanelOpen });
-  }
-
-  renderUnitPicker() {
-    const { isUnitsPanelOpen } = this.state;
-    if (!isUnitsPanelOpen) {
-      return null;
-    }
-
-    const { availableUnits, onAdd } = this.props;
-    const props = {
-      availableUnits,
-      onClose: this.toggleUnitPicker,
-      onChange: onAdd
-    };
-    return <UnitPicker {...props} />;
-  }
-
   renderUnitsGrid() {
-    const { units } = this.props;
+    const { units, onRemove } = this.props;
     const items = units.map(unit => ({ ...unit, id: unit.uid }));
     const props = {
       items,
+      onRemove,
       columns
     };
     return <Grid {...props} />;
   }
 
   render() {
+    const { onTogglePicker } = this.props;
     const renderedUnits = this.renderUnitsGrid();
-    const unitPicker = this.renderUnitPicker();
     return (
       <div className="widget units">
         <Paper>
@@ -70,8 +45,8 @@ export default class extends React.PureComponent {
                 {renderedUnits}
               </div>
               <div className="unit-picker">
-                {unitPicker}
-                <Button onClick={this.toggleUnitPicker}>Add units</Button>
+                {/* {unitPicker} */}
+                <Button onClick={onTogglePicker}>Add units</Button>
               </div>
             </div> 
           </div>

@@ -34,6 +34,7 @@ export default class extends React.PureComponent {
     const props = {
       key,
       row,
+      controller: this,
       columns
     }
     return <GridRow {...props} />;
