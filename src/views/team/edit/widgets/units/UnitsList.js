@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as lodash from 'lodash';
 import Paper from '@material-ui/core/Paper';
-import { Button } from 'src/components';
+import { Button, Grid } from 'src/components';
 import UnitPicker from './UnitPicker';
+import columns from './columns';
 
 export default class extends React.PureComponent {
 
@@ -28,9 +29,6 @@ export default class extends React.PureComponent {
     const isUnitsPanelOpen = !this.state.isUnitsPanelOpen;
     this.setState({ isUnitsPanelOpen });
   }
-  renderUnit(unit) {
-    return <div key={unit.uid} className="unit">{unit.name}</div>;
-  }
 
   renderUnitPicker() {
     const { isUnitsPanelOpen } = this.state;
@@ -47,9 +45,18 @@ export default class extends React.PureComponent {
     return <UnitPicker {...props} />;
   }
 
-  render() {
+  renderUnitsGrid() {
     const { units } = this.props;
-    const renderedUnits = units.map(this.renderUnit);
+    const items = units.map(unit => ({ ...unit, id: unit.uid }));
+    const props = {
+      items,
+      columns
+    };
+    return <Grid {...props} />;
+  }
+
+  render() {
+    const renderedUnits = this.renderUnitsGrid();
     const unitPicker = this.renderUnitPicker();
     return (
       <div className="widget units">
