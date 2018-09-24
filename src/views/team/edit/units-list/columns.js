@@ -3,6 +3,10 @@ import { Button } from 'src/components';
 import unitGridColumns from '../unit-picker/unit/unitGridColumns';
 
 const decorators = {
+  weapons: ({ cell }) => {
+    const renderedWeapons = cell.map(weapon => <div key={weapon.id}>{weapon.name}</div>)
+    return <div>{renderedWeapons}</div>;
+  },
   edit: () => {
     return (
       <div>
@@ -29,7 +33,8 @@ const columns = [
   },
   ...unitGridColumns,
   {
-    key: 'weapons'
+    key: 'weapons',
+    decorator: decorators.weapons
   },  
   {
     key: 'wargear'

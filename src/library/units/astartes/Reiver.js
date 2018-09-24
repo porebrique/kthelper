@@ -1,5 +1,9 @@
 import Unit from '../Unit';
 import { factionKeys } from '../../dictionaries';
+import { ranged, melee } from './weapons';
+
+const { boltCarbine, heavyBoltPistol } = ranged;
+const { combatKnife } = melee;
 
 export default class extends Unit {
 
@@ -17,5 +21,14 @@ export default class extends Unit {
   static saves = 3;
   static max = null;
   static power = 16;
+
+  static weapons = [
+    boltCarbine,
+    heavyBoltPistol,
+  ];
+
+  static weaponsAvailable = [
+    { weapon: combatKnife, replaces: boltCarbine }
+  ];
 
 }

@@ -17,6 +17,7 @@ export default class Unit {
             leadership, 
             saves,
             max, 
+            weapons,
             weaponsAvailable, 
             wargearAvailable, 
         } = this.constructor;
@@ -34,12 +35,14 @@ export default class Unit {
         this.leadership = leadership;
         this.saves = saves;
         this.max = max;
+        this.weapons = weapons;
         this.weaponsAvailable = weaponsAvailable;
         this.wargearAvailable = wargearAvailable;
 
         // NB: Similar units can be added multiple times, hence the random key generator
         // uid is also supposed to be used as "key" prop 
         this.uid = uuid();
+        this.validate();
     }
 
     // TODO: Add weapons and wargear
@@ -49,5 +52,14 @@ export default class Unit {
             throw new Error(`${unitName} doesn't have "power" defined`);
         }
         return power;
+    }
+
+    validate() {
+        const { name, weapons } = this;
+        weapons.forEach(weapon => {
+            if (!weapon) {
+                throw new Error(`${name}: one of weapons is not defined correctly `);
+            }
+        })
     }
 }
