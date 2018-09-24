@@ -30,13 +30,13 @@ export default class extends React.PureComponent {
   }
 
   renderCell(column) {
-    const { row } = this.props;
+    const { row, controller } = this.props;
     const data = row[column.key]
     const decorator = this.getDecorator(column);
     const props =  {
       numeric: true,
       key: column.key,
-      children: decorator({ cell: data, row })
+      children: decorator({ cell: data, row, controller })
     };
     return <TableCell {...props} />;
   }

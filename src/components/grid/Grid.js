@@ -21,6 +21,10 @@ export default class extends React.PureComponent {
     })).isRequired
   };
 
+  static defaultProps = {
+    methods: {}
+  }
+
   constructor(props) {
     super(props);
     lodash.bindAll(this, [
@@ -34,6 +38,7 @@ export default class extends React.PureComponent {
     const props = {
       key,
       row,
+      controller: this,
       columns
     }
     return <GridRow {...props} />;
