@@ -12,6 +12,7 @@
         
         .wrapper {
             margin: 10px;
+            position: relative;
         }
         .team-name {
             font-size: 130%;
@@ -29,6 +30,20 @@
         }
         .actions {
             margin-top: 10px;
+        }
+        .team-power {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 16px;
+            border: 1px solid silver;
+            border-radius: 30px;
+            padding: 5px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
         }
     }
     .add-team-ui {

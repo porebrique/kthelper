@@ -39,13 +39,14 @@ export default class extends React.PureComponent {
   }
 
   render() {
-    const { name, units } = this.props;
+    const { name, power, units } = this.props;
     const renderedUnits = units.map(this.renderUnit);
     const editButton = this.renderEditButton();
     const faction = this.getFaction();
     return (
         <div className="team">
             <div className="wrapper">
+            <div className="team-power">{power}</div>
                 <div className="team-name">{name}</div>
                 <div className="team-faction">{faction}</div>
                 <div className="units">

@@ -1,10 +1,12 @@
 import React from 'react';
 import * as lodash from 'lodash';
+import Grid from '@material-ui/core/Grid';
 import { Button } from 'src/components';
 import library from 'src/library';
 import UnitPicker from './unit-picker';
 import UnitsList from './units-list';
 import FactionPicker from './faction-picker';
+import PowerIndicator from './power-indicator';
 
 import './style.scss';
 
@@ -33,6 +35,12 @@ export default class extends React.PureComponent {
         ...props.team
       }
     };
+  }
+
+  getPower() {
+    const { team } = this.state;
+    const { units } = team;
+    return units.reduce((result, unit) => result + unit.getPower(), 0);
   }
 
   getAvailableUnits() {
@@ -141,18 +149,28 @@ export default class extends React.PureComponent {
     return <UnitsList {...props} />;
   }
 
+  renderPower() {
+    return <PowerIndicator power="42"/>;
+  }
+
   render() {
     const { team } = this.props;
     const faction = this.renderFaction();
     const units = this.renderUnits();
     const unitPicker = this.renderUnitPicker();
+    const power = this.getPower();
     return (
         <div className="kth-team-edit">
             Editing team "{team.name}"
             {unitPicker}
-            <div>
-              {faction}
-            </div>
+            <Grid container spacing={8}>
+              <Grid item xs={3}>
+                {faction}
+              </Grid>
+              <Grid item xs={2}>
+                <PowerIndicator power={power}/>
+              </Grid>              
+            </Grid>            
             <div>
               {units}
             </div>

@@ -1,4 +1,3 @@
-import Unit from './Unit';
 import Library from 'src/library';
 
 export default class Team {
@@ -12,11 +11,12 @@ export default class Team {
         this.id = id;
         this.name = name || `Team ${id}`;
         this.setFaction(faction);
-        this.units = units.map(this.generateUnit);
+        this.units = units;
     }
 
+    // TODO: how is it even needed?
     generateUnit(unit) {
-        return new Unit({ ...unit });
+        throw new Error('Team model: .generateUnit is obsolete');
     }
 
     getFaction(faction) {

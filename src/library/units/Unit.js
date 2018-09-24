@@ -1,6 +1,6 @@
 import uuid from 'uuid';
 
-export default class {
+export default class Unit {
 
     constructor() {
         const { 
@@ -40,5 +40,14 @@ export default class {
         // NB: Similar units can be added multiple times, hence the random key generator
         // uid is also supposed to be used as "key" prop 
         this.uid = uuid();
+    }
+
+    // TODO: Add weapons and wargear
+    getPower() {
+        const { power, unitName } = this.constructor;
+        if (!power) {
+            throw new Error(`${unitName} doesn't have "power" defined`);
+        }
+        return power;
     }
 }

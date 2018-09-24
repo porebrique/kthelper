@@ -18,6 +18,11 @@ export default class extends React.Component {
     lodash.bindAll(this, ['renderTeam']);
   }
 
+  getPower(team) {
+    const { units } = team;
+    return units.reduce((result, unit) => result + unit.getPower(), 0);
+  }
+
   renderAddTeamButton() {
     const { onAddTeam } = this.props;
     const buttonProps = {
@@ -36,6 +41,7 @@ export default class extends React.Component {
     const props = {
       key: team.id,
       ...team,
+      power: this.getPower(team),
       onChangeTeam
     }
     return <Team {...props} />;
