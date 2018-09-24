@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import GridRow from './GridRow';
 import GridRowHeader from './GridRowHeader';
 import { columnProp } from './props';
+import './style.scss';
 
 export default class extends React.PureComponent {
 
@@ -56,7 +57,7 @@ export default class extends React.PureComponent {
     const header = this.renderHeader();
     const renderedRows = items.map(this.renderRow);
     return (
-       <Table>
+       <Table className="kt-grid">
          {header}
          <TableBody>
           {renderedRows}
