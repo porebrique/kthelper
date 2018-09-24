@@ -17,4 +17,6 @@ export default class extends Unit {
   static saves = 4;
   static max = null;
 
+  static power = 9;
+
 }

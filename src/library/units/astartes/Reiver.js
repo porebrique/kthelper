@@ -16,5 +16,6 @@ export default class extends Unit {
   static leadership = 7;
   static saves = 3;
   static max = null;
+  static power = 16;
 
 }
