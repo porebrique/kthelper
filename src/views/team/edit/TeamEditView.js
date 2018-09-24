@@ -91,9 +91,9 @@ export default class extends React.PureComponent {
     this.setState({ team });
   }
 
-  removeUnit(unit) {
+  removeUnit(uid) {
     const { team } = this.state;
-    const units = lodash.reject(team.units, { id: unit.id });
+    const units = lodash.reject(team.units, { uid });
     this.setState({
       team: {
         ...team,
