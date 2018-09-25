@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'src/components';
-import unitGridColumns from '../unit-picker/unit/unitGridColumns';
+import commonColumns from './columns-common';
 
 const decorators = {
   weapons: ({ cell }) => {
@@ -28,10 +28,10 @@ const decorators = {
 }
 
 const columns = [
-  { 
+  {
     key: 'name'
   },
-  ...unitGridColumns,
+  ...commonColumns,
   {
     key: 'weapons',
     decorator: decorators.weapons

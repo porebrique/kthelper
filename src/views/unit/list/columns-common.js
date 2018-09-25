@@ -1,3 +1,4 @@
+
 const columns = [
   { 
     key: 'move',
@@ -34,10 +35,6 @@ const columns = [
   { 
     key: 'saves',
     name: 'Sv'
-  },
-  { 
-    key: 'max',
-    name: 'Max'
   }
 ];
 
