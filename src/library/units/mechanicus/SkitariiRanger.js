@@ -9,15 +9,19 @@ export default class extends Unit {
   static factionKey = factionKeys.mechanicus;
   static key = 'skitariiRanger';
   static unitName = 'Skitarii Ranger';
-  static move = 6;
-  static weaponSkill = 4;
-  static ballisticSkill = 3;
-  static strength = 3;
-  static toughness = 3;
-  static wounds = 1;
-  static attacks = 1;
-  static leadership = 6;
-  static saves = 4;
+
+  static stats = {
+    move: 6,
+    weaponSkill: 4,
+    ballisticSkill: 3,
+    strength: 3,
+    toughness: 3,
+    wounds: 1,
+    attacks: 1,
+    leadership: 6,
+    saves: 4
+  };
+
   static max = null;
 
   static power = 9;

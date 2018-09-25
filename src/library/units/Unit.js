@@ -7,6 +7,13 @@ export default class Unit {
             unitName: name, 
             key,
             factionKey,
+            max, 
+            weapons,
+            weaponsAvailable, 
+            wargearAvailable, 
+            stats
+        } = this.constructor;        
+        const { 
             move,
             weaponSkill, 
             ballisticSkill, 
@@ -15,12 +22,8 @@ export default class Unit {
             wounds, 
             attacks, 
             leadership, 
-            saves,
-            max, 
-            weapons,
-            weaponsAvailable, 
-            wargearAvailable, 
-        } = this.constructor;
+            saves
+        } = stats;
         this.key = key;
         // TODO: Probably some props can be reached in constructor
         this.factionKey = factionKey;

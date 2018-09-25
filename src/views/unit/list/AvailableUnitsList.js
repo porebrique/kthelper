@@ -11,7 +11,7 @@ export default class extends UnitsList {
 
   getProps() {
     const { units, onAdd } = this.props;
-    const items = units.map(unit => ({ ...unit, id: unit.key }));
+    const items = units.map(unit => ({ ...unit, ...unit.stats, id: unit.key }));
     return {
       items,
       onAdd,
