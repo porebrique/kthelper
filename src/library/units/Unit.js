@@ -59,6 +59,9 @@ export default class Unit {
 
     validate() {
         const { name, weapons } = this;
+        if (!Array.isArray(weapons)) {
+            throw new Error(`${name}: static "weapons" property should be an array`);
+        }
         weapons.forEach(weapon => {
             if (!weapon) {
                 throw new Error(`${name}: one of weapons is not defined correctly `);
