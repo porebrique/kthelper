@@ -1,0 +1,21 @@
+.kth-unit-edit {
+    width: 500px;
+
+    .stats {
+        padding: 20px;
+        border: 1px solid silver;
+        border-radius: 5px;
+        margin-bottom: 30px;
+    }
+
+    .weapons-list {
+        margin-left: 20px;
+        .title {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .weapon {
+            margin-bottom: 5px;
+        }
+    }
+}

@@ -8,6 +8,7 @@ export default class extends React.PureComponent {
 
   static propTypes = {
     units: PropTypes.array.isRequired,
+    onEdit: PropTypes.func.isRequired,
     onRemove: PropTypes.func.isRequired
   };
 
@@ -19,9 +20,10 @@ export default class extends React.PureComponent {
   }
   
   renderUnitsGrid() {
-    const { units, onRemove } = this.props;
+    const { units, onRemove, onEdit } = this.props;
     const props = {
       units,
+      onEdit,
       onRemove
     };
     return <UnitsList {...props} />;
