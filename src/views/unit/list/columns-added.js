@@ -7,23 +7,18 @@ const decorators = {
     const renderedWeapons = cell.map(weapon => <div key={weapon.id}>{weapon.name}</div>)
     return <div>{renderedWeapons}</div>;
   },
-  edit: () => {
-    return (
-      <div>
-        <Button>Edit</Button>
-      </div>
-    );
+  // TODO: move actions to a separate component to avoid binding
+  edit: ({ row, controller }) => {
+    const { onEdit } = controller.props;
+    const onClick = onEdit.bind(null, row);
+    return <Button onClick={onClick}>Edit</Button>;
   },
   remove: ({ row, controller }) => {
     const { onRemove } = controller.props;
     const props = {
       onClick: () => onRemove(row.id)
     }
-    return (
-      <div>
-        <Button {...props}>Delete</Button>
-      </div>
-    );
+    return <Button {...props}>Delete</Button>;
   }  
 }
 

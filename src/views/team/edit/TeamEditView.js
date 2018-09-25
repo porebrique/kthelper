@@ -7,6 +7,7 @@ import UnitPicker from './unit-picker';
 import { UnitsList } from './units-list';
 import FactionPicker from './faction-picker';
 import PowerIndicator from './power-indicator';
+import UnitEditDialog from './UnitEditDialog';
 
 import './style.scss';
 
@@ -22,6 +23,7 @@ export default class extends React.PureComponent {
     lodash.bindAll(this, [
       'addUnit',
       'removeUnit',
+      'toggleUnitDialog',
       'toggleUnitPicker',
       'changeFaction',
       'save'
@@ -31,6 +33,7 @@ export default class extends React.PureComponent {
     // TODO: team.faction can be class instance or plain object at various moments, which is wrong
     this.state = {
       isUnitsPanelOpen: false,
+      editUnit: null,
       team: {
         ...props.team
       }
@@ -54,6 +57,10 @@ export default class extends React.PureComponent {
   toggleUnitPicker() {
     const isUnitsPanelOpen = !this.state.isUnitsPanelOpen;
     this.setState({ isUnitsPanelOpen });
+  }
+
+  toggleUnitDialog(editUnit = null) {
+    this.setState({ editUnit });    
   }
 
   changeFaction(faction) {
@@ -144,6 +151,7 @@ export default class extends React.PureComponent {
     const props = {
       units,
       onTogglePicker: this.toggleUnitPicker,
+      onEdit: this.toggleUnitDialog,
       onRemove: this.removeUnit
     };
     return <UnitsList {...props} />;
@@ -153,16 +161,31 @@ export default class extends React.PureComponent {
     return <PowerIndicator power="42"/>;
   }
 
+  renderUnitDialog() {
+    const { editUnit } = this.state;
+    if (!editUnit) {
+      return null;
+    }
+    
+    const props = {
+      unit: editUnit,
+      onClose: this.toggleUnitDialog
+    }
+    return <UnitEditDialog {...props} />;
+  }
+
   render() {
     const { team } = this.props;
     const faction = this.renderFaction();
     const units = this.renderUnits();
     const unitPicker = this.renderUnitPicker();
     const power = this.getPower();
+    const unitDialog = this.renderUnitDialog();
     return (
         <div className="kth-team-edit">
             Editing team "{team.name}"
             {unitPicker}
+            {unitDialog}
             <Grid container spacing={8}>
               <Grid item xs={3}>
                 {faction}
