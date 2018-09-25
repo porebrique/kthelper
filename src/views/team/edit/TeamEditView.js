@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { Button } from 'src/components';
 import library from 'src/library';
 import UnitPicker from './unit-picker';
-import UnitsList from './units-list';
+import { UnitsList } from './units-list';
 import FactionPicker from './faction-picker';
 import PowerIndicator from './power-indicator';
 
@@ -78,8 +78,9 @@ export default class extends React.PureComponent {
   }
 
   
-  addUnit(Unit) {
+  addUnit(key) {
     const { team: currentTeam } = this.state;
+    const Unit = lodash.find(this.getAvailableUnits(), { key });
     const unit = new Unit();
     const team = {
       ...currentTeam,
@@ -127,7 +128,7 @@ export default class extends React.PureComponent {
     const props = {
       availableUnits,
       onClose: this.toggleUnitPicker,
-      onChange: this.addUnit
+      onAdd: this.addUnit
     };
     return <UnitPicker {...props} />;
   }
@@ -143,8 +144,7 @@ export default class extends React.PureComponent {
     const props = {
       units,
       onTogglePicker: this.toggleUnitPicker,
-      onRemove: this.removeUnit,
-      onAdd: this.addUnit
+      onRemove: this.removeUnit
     };
     return <UnitsList {...props} />;
   }

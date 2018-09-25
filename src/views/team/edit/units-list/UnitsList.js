@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import { Button, Grid } from 'src/components';
-import columns from './columns';
+import { Button } from 'src/components';
+import { UnitsList } from 'src/views/unit';
 
 export default class extends React.PureComponent {
 
   static propTypes = {
     units: PropTypes.array.isRequired,
-    onRemove: PropTypes.func.isRequired,
-    onAdd: PropTypes.func.isRequired
+    onRemove: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -21,13 +20,11 @@ export default class extends React.PureComponent {
   
   renderUnitsGrid() {
     const { units, onRemove } = this.props;
-    const items = units.map(unit => ({ ...unit, id: unit.uid }));
     const props = {
-      items,
-      onRemove,
-      columns
+      units,
+      onRemove
     };
-    return <Grid {...props} />;
+    return <UnitsList {...props} />;
   }
 
   render() {
