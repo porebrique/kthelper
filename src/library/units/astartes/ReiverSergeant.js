@@ -1,3 +1,4 @@
+import Unit from '../Unit';
 import Reiver from './Reiver';
 import { factionKeys } from '../../dictionaries';
 
