@@ -1,6 +1,5 @@
 import Unit from '../Unit';
 import { factionKeys } from '../../dictionaries';
-// import { ranged } from './weapons';
 import Ranger from './SkitariiRanger';
 
 export default class extends Unit {
