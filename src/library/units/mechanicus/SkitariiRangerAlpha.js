@@ -20,11 +20,4 @@ export default class extends Unit {
   // arc pistol, phosphor blast pistol or radium pistol; 
   // arc maul, power sword or taser goad. 
 
-  static loadoutOptions = [
-    [
-      // [boltCarbine],
-      // [combatKnife]
-    ]
-  ];  
-
 }
