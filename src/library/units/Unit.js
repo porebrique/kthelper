@@ -9,7 +9,9 @@ export default class Unit {
             factionKey,
             max, 
             weapons,
-            weaponsAvailable, 
+            // TODO: default [] looks weirds
+            weaponsAvailable = [], 
+            weaponsComments = [],
             wargearAvailable, 
             stats
         } = this.constructor;        
@@ -41,6 +43,7 @@ export default class Unit {
         this.weapons = weapons;
         this.weaponsAvailable = weaponsAvailable;
         this.wargearAvailable = wargearAvailable;
+        this.weaponsComments = weaponsComments;
 
         // NB: Similar units can be added multiple times, hence the random key generator
         // uid is also supposed to be used as "key" prop 

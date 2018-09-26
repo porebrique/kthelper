@@ -11,7 +11,8 @@ import UnitEditDialog from './UnitEditDialog';
 
 import './style.scss';
 
-export default class extends React.PureComponent {
+export default class extends React.Component {
+// export default class extends React.PureComponent {
 
   static defaultProps = {
     team: {}
@@ -22,6 +23,7 @@ export default class extends React.PureComponent {
 
     lodash.bindAll(this, [
       'addUnit',
+      'updateUnit',
       'removeUnit',
       'toggleUnitDialog',
       'toggleUnitPicker',
@@ -115,6 +117,14 @@ export default class extends React.PureComponent {
     this.props.onSave(team);
   }
 
+  // NB: This lefts unit instance the same, which prevents re-rendering
+  updateUnit(unit) {
+    const team = {...this.state.team};
+    const changedUnit = team.units.find(({ uid }) => uid === unit.uid);
+    changedUnit.weapons = unit.weapons;
+    this.setState({ team });
+  }
+
   renderFaction() {
     const { team } = this.state;
     const props = {
@@ -149,16 +159,13 @@ export default class extends React.PureComponent {
     
     const { units } = team;
     const props = {
-      units,
+      // TODO: otherwise render is not triggered after .updateUnit
+      units: units.map(unit => ({...unit})),
       onTogglePicker: this.toggleUnitPicker,
       onEdit: this.toggleUnitDialog,
       onRemove: this.removeUnit
     };
     return <UnitsList {...props} />;
-  }
-
-  renderPower() {
-    return <PowerIndicator power="42"/>;
   }
 
   renderUnitDialog() {
@@ -169,6 +176,7 @@ export default class extends React.PureComponent {
     
     const props = {
       unit: editUnit,
+      onSave: this.updateUnit,
       onClose: this.toggleUnitDialog
     }
     return <UnitEditDialog {...props} />;
