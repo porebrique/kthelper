@@ -1,0 +1,9 @@
+.kth-checkbox {
+  &.inline {
+    display: inline-block;
+  }
+  label > span:first-child {
+    width: 30px;
+    height: 30px;
+  }
+}

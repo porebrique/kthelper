@@ -31,9 +31,13 @@ export default class extends Unit {
   ];
 
   static weaponsAvailable = [
-    { weapon: combatKnife, replaces: boltCarbine }
+    boltCarbine,
+    heavyBoltPistol,
+    combatKnife
   ];
 
-  // A Reiver may replace their bolt carbine with a combat knife. 
+  static weaponsComments = [
+    'A Reiver may replace their bolt carbine with a combat knife'
+  ];
 
 }
