@@ -1,8 +1,8 @@
 import Unit from '../Unit';
 import { factionKeys } from '../../dictionaries';
-import { ranged } from './weapons';
+import weapons from 'src/library/weapons';
 
-const { galvanicRifle } = ranged;
+const { galvanicRifle } = weapons.mechanicus;
 
 export default class extends Unit {
 

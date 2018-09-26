@@ -1,9 +1,8 @@
 import Unit from '../Unit';
 import { factionKeys } from '../../dictionaries';
-import { ranged, melee } from './weapons';
+import weapons from 'src/library/weapons';
 
-const { boltCarbine, heavyBoltPistol } = ranged;
-const { combatKnife } = melee;
+const { boltCarbine, heavyBoltPistol, combatKnife } = weapons.astartes;
 
 export default class extends Unit {
 

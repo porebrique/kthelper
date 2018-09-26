@@ -20,6 +20,7 @@ export default class extends Unit {
 
   static weapons = Reiver.weapons;
 
-  // A Reiver Sergeant may replace their bolt carbine or heavy bolt pistol with a combat knife
+  // A Reiver Sergeant may replace their bolt carbine 
+  // or heavy bolt pistol with a combat knife
 
 }
